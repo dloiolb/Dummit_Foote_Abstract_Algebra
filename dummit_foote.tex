@@ -1,0 +1,186 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[]{mdframed}
+\usepackage{lipsum}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsfonts} 
+\usepackage{times}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amsmath}
+\usepackage{centernot}
+\usepackage{amsthm,amssymb}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{titletoc}
+\usepackage{graphicx}
+\usepackage{minitoc}
+
+\usepackage[T1]{fontenc}
+\usepackage{stix}
+\renewcommand\familydefault{\sfdefault}
+
+\usepackage[titles]{tocloft}
+\renewcommand{\cftdot}{} 
+
+\usepackage{amsthm}
+%\usepackage{thmtools}
+
+\newtheorem{theorem}{Theorem}[section] % the main one
+\theoremstyle{plain} % just in case the style had changed
+
+% Define a theorem style that doesn't show parentheses
+\newtheoremstyle{noparens}%
+  {}{}               % Space above/below
+  { }         % Body font
+  {}                 % Indent amount
+  {}                 % Theorem head font (no "Theorem" label)
+  {}                 % Punctuation after theorem number
+  { }                % Space after theorem head
+  {\textbf{\thmnumber{#2}}~\textbf{\thmnote{#3}}.} 
+
+\theoremstyle{noparens}
+\newtheorem{genericthm}{}[section]  % No "Theorem" word
+
+\makeatletter
+\newcommand{\thistheoremname}{}
+\newenvironment{namedthm}[1]{%
+  \renewcommand{\thistheoremname}{#1}%
+  \def\@currentlabel{\arabic{section}.\arabic{genericthm}}%
+  \begin{genericthm}[\thistheoremname]%
+}{\end{genericthm}}
+\makeatother
+
+
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+% \usepackage{titlesec}
+% \usepackage{titletoc}
+\usepackage{blindtext} 
+
+% \usepackage{tocloft}
+\usepackage{tocloft}
+  \setlength{\cftchapnumwidth}{2.25cm}
+  \renewcommand{\cftchappresnum}{Chapter }
+
+  % \usepackage[toc]{multitoc}
+% \renewcommand*{\multicolumntoc}{2}
+\setlength{\columnseprule}{0.5pt}
+\renewcommand{\cftchapleader}{\:\:}
+\renewcommand{\cftchapafterpnum}{\cftparfillskip}
+% \renewcommand{\cftpnumalign}{l}
+\renewcommand{\cftsecleader}{\:\:}
+\renewcommand{\cftsecafterpnum}{\cftparfillskip}
+\renewcommand{\cftpartleader}{\:\:}
+\renewcommand{\cftpartafterpnum}{\cftparfillskip}
+
+% \renewcommand{\cftpartfont}{\sffamily}
+% \renewcommand{\cftchapfont}{\sffamily}
+\renewcommand{\cftsecfont}{\sffamily}
+% \renewcommand{\cftsubsecfont}{\sffamily}
+% \renewcommand{\cftpartpagefont}{\sffamily}
+% \renewcommand{\cftchappagefont}{\sffamily}
+\renewcommand{\cftsecpagefont}{\sffamily}
+% \renewcommand{\cftsubsecpagefont}{\sffamily}
+
+
+%   % ---------- Chapter formatting ----------
+% \setlength{\cftchapindent}{0pt}        % no indent
+% \setlength{\cftchapnumwidth}{3em}      % enough space for "10"
+% \renewcommand{\cftchapfont}{\normalfont}
+% \renewcommand{\cftchappagefont}{\normalfont}
+
+% % ---------- Section formatting ----------
+% \setlength{\cftsecindent}{3em}         % indent to align with chapter title
+% \setlength{\cftsecnumwidth}{4em}       % enough space for "10.1"
+% \renewcommand{\cftsecfont}{\normalfont}
+% \renewcommand{\cftsecpagefont}{\normalfont}
+
+%   \titlecontents{part}%
+% [0pt]{\sffamily\bfseries\large\protect\addvspace{15pt}\titlerule\addvspace{1.5ex}}%remove rule if you like
+% {}{\partname~}
+% {\hfill\contentspage}%replaced with {} if don't want page number for parts
+% [\addvspace{0.7ex}\titlerule\addvspace{1.5ex}]%remove rule if you like
+
+% \titlecontents{part}%
+% [0pt]{}%remove rule if you like
+% {}{\MakeUppercase{\partname}~}
+% {\cftpartleader\contentspage}%replaced with {} if don't want page number for parts
+% [\addvspace{2ex}]%remove rule if you like
+
+
+% \setlength{\cftchapnumwidth}{0pt}
+% \renewcommand{\cftchappresnum}{\chaptername\ }
+% \renewcommand{\cftchapaftersnum}{\ \ \ \ }
+% \renewcommand{\cftchapaftersnumb}{\newline}
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+% \renewcommand{\cftpartpresnum}{Part \ }   % Prefix before part number
+% \renewcommand{\cftpartaftersnum}{hi} % Space after the number
+\renewcommand{\cftpartpresnum}{\hfill}
+\renewcommand{\cftpartleader}{\hfill}
+
+% \renewcommand{\thesubsection}{\Alph{subsection}.}
+\makeatletter
+\@addtoreset{subsection}{section} % resets subsection counter at each new section
+\makeatother
+% \usepackage{tocloft}
+\renewcommand{\cftsecnumwidth}{1.7cm}
+
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper}
+\usepackage[english]{babel}
+\title{ABSTRACT ALGEBRA\\
+    \large DUMMIT, FOOTE\\
+    \large Second Edition\\
+	\large Notes + Exercises\\
+}
+\author{J.B.}
+\date{\small July 2025
+}
+
+\begin{document}
+
+
+\pagenumbering{roman}
+\maketitle
+% hello
+{\sffamily
+\tableofcontents
+}
+
+\clearpage\pagenumbering{arabic}
+%\pagenumbering{arabic}
+
+\setcounter{chapter}{0}
+\include{chapters/preliminaries}
+\part{GROUP THEORY}
+\include{chapters/chapter01}
+\include{chapters/chapter02}
+\include{chapters/chapter03}
+\include{chapters/chapter04}
+\include{chapters/chapter05}
+\include{chapters/chapter06}
+\part{RING THEORY}
+\include{chapters/chapter07}
+\include{chapters/chapter08}
+\include{chapters/chapter09}
+\part{MODULES AND VECTOR SPACES}
+\include{chapters/chapter10}
+\include{chapters/chapter11}
+\include{chapters/chapter12}
+\part{FIELD THEORY AND GALOIS THEORY}
+\include{chapters/chapter13}
+\include{chapters/chapter14}
+\part{AN INTRODUCTION TO COMMUTATIVE RINGS, ALGEBRAIC GEOMETRY, AND HOMOLOGICAL ALGEBRA}
+\include{chapters/chapter15}
+\include{chapters/chapter16}
+\include{chapters/chapter17}
+\part{INTRODUCTION TO THE REPRESENTATION THEORY OF FINITE GROUPS}
+\include{chapters/chapter18}
+\include{chapters/chapter19}
+\include{chapters/AppendixI}
+\include{chapters/AppendixII}
+
+\end{document}
