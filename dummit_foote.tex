@@ -24,7 +24,7 @@
 \renewcommand{\cftdot}{} 
 
 \usepackage{amsthm}
-%\usepackage{thmtools}
+% \usepackage{thmtools}
 
 \newtheorem{theorem}{Theorem}[section] % the main one
 \theoremstyle{plain} % just in case the style had changed
@@ -43,13 +43,21 @@
 \newtheorem{genericthm}{}[section]  % No "Theorem" word
 
 \makeatletter
-\newcommand{\thistheoremname}{}
+% \newcommand{\thistheoremname}{}
 \newenvironment{namedthm}[1]{%
   \renewcommand{\thistheoremname}{#1}%
   \def\@currentlabel{\arabic{section}.\arabic{genericthm}}%
   \begin{genericthm}[\thistheoremname]%
 }{\end{genericthm}}
 \makeatother
+
+\theoremstyle{plain} % just in case the style had changed
+\newcommand{\thistheoremname}{}
+\newtheorem*{genericthm*}{\thistheoremname}
+\newenvironment{namedthm*}[1]
+	{\renewcommand{\thistheoremname}{#1}%
+	\begin{genericthm*}}
+	{\end{genericthm*}}
 
 
 \usepackage[T1]{fontenc}

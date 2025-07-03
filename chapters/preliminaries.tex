@@ -3,6 +3,223 @@
 
 % 0.1
 \section{Basics}
+Let $f:A\to B$.
+\begin{enumerate}[(1)]
+        \item $f$ is \textit{injective} or is an \textit{injection} if whenever $a_1\neq a_2$, then $f(a_1)\neq f(a_2)$.
+        \item $f$ is \textit{surjective} or is an \textit{surjection} if for all $b\in B$ there is some $a\in A$ such that $f(a)=b$; i.e., the image of $f$ is all of $B$. 
+        (The codomain of $f$ is $B$, while the range/image of $f$ is the subset $f(A):=\{b\in B:b=f(a), \text{ for some }a\in A\}$)
+        \item $f$ is \textit{bijective} or is an \textit{bijection} if it is both injective and surjective.
+        \item $f$ has a \textit{left inverse} if there is a function $g:B\to A$ such that $g\circ f:A\to A$ is the identity map on $A$; i.e., $(g\circ f)(a)=a$, for all $a\in A$.
+        \item $f$ has a \textit{right inverse} if there is a function $h:B\to A$ such that $f\circ h:B\to B$ is the identity map on $B$; i.e., $(f\circ h)(b)=b$, for all $b\in B$.
+    \end{enumerate}
+\begin{namedthm*}{Proposition 1}
+    Let $f:A\to B$.
+    \begin{enumerate}[(1)]
+        \item The map $f$ is injective iff $f$ has a left inverse.
+        \item The map $f$ is surjective iff $f$ has a right inverse.
+        \item The map $f$ is a bijection iff there exists $g:B\to A$ such that $f\circ g$ is the identity map on $B$ and $g\circ f$ is the identity map on $A$.
+        (The map $g$ is necessarily unique and we say $g$ is the 2-sided \textit{inverse} of $f$)
+        \item If $A$ and $B$ are finite sets with the same number of elements ($|A|=|B|$), then $f:A\to B$ is bijective iff $f$ is injective iff $f$ is surjective.
+    \end{enumerate}
+    \begin{proof}
+    
+    \begin{enumerate}[(1)]
+        \item Suppose $f$ is injective. 
+        Now, note that by definition of image of $f$, for all $c\in f(A)$, there exists $a\in A$ s.t. $c=f(a)$.
+        Thus for all such $c$, we may define the function $g:f(A)\to A$ by $g(f(a))=g(c):=a$.
+        Note that $g$ is well-defined as a function because each unique $c\in B$ corresponds to a unique $a\in A$ ($c_1=f(a_1)= f(a_2)=c_2$ implies $g(c_1)=a_1=a_2=g(c_2)$).
+        We may extend $g$ to all of $B$ arbitrarily.
+        On the other hand, suppose $f$ has a left inverse.
+        Consider any $a_1,a_2\in A$ such that $f(a_1)=f(a_2)$.
+        Then $a_1=g(f(a_1))=g(f(a_2))=a_2$.
+        \item Suppose $f$ is surjective. 
+        Then for any $b\in B$, there exists some $a\in A$ such that $f(a)=b$. 
+        Thus it is well-defined to define the function $h:B\to A$ such that $h(b)=a$, and we have $f(h(b))=f(a)=b$.
+        On the other hand, suppose $f$ has a right inverse.
+        Consider any $b\in B$.
+        Then $f(h(b))=b$, with $a=h(b)\in A$
+        \item Suppose $f$ is a bijection.
+        Then by (1) and (2), there exists a left inverse $g$ and a right inverse $h$.
+        Fix any $b\in B$.
+        Then by surjectivity of $f$, there exists $a\in A$ such that $b=f(a)$.
+        But then $g(b)=g(f(a))=a=h(b)$, and $g\equiv h$ is the inverse of $f$.
+        \item Bijective implies injective and surjective by definition.
+        Now suppose $f$ is injective.
+        Suppose that for all $a\in A$ there does not exist $b\in B$ whence $f(a)=b$.
+        But by the pidgeonhole principle there must be (distinct) $a_1\neq a_2\in A$ that map to the same element in $B$; i.e., $f(a_1)=f(a_2)$, and this is a contradiction to the injectivity.
+        On the other hand suppose $f$ is surjective.
+        Suppose that there exists $a_1\neq a_2\in A$ but $f(a_1)=f(a_2)$.
+        Again by the pidgeonhole principle there must be a $b\in B$ that is not mapped to, which is a contradiction.
+    \end{enumerate}
+    \end{proof}
+    Let $A$ be a nonempty set.
+    \begin{enumerate}[(1)]
+        \item A \textit{binary relation} on a set $A$ is a subset $R$ of $A\times A$ and we write $a\sim b$ if $(a,b)\in R$.
+        \item The relation $\sim$ on $A$ is said to be:
+        \begin{enumerate}[(a)]
+            \item \textit{reflexive} if $a\sim a$ for all $a\in A$,
+            \item \textit{symmetric} if $a\sim b$ implies $b\sim a$ for all $a,b\in A$,
+            \item \textit{transitive} if $a\sim b$ and $b\sim c$ implies $a\sim c$ for all $a,b,c\in A$.
+        \end{enumerate}
+        A relation is an \textit{equivalence relation} if it is reflexive, symmetric, and transitive.
+        \item If $\sim$ defines an equivalence relation on $A$, then the \textit{equivalence class} of $a\in A$ is defined to be $\{x\in A\mid x\sim a\}$.
+        Elements of the equivalence class of $a$ are said to be \textit{equivalent} to $a$.
+        If $C$ is an equivalence class, any element of $C$ is called a \textit{representative} of the class $C$.
+        \item A \textit{partition} of $A$ is any collection $\{A_i\mid i\in I\}$ of nonempty subsets of $A$ ($I$ some indexing set) such that 
+        \begin{enumerate}[(a)]
+            \item $A=\cup_{i\in I}A_i$, and 
+            \item $A_i\cap A_j=\emptyset$, for all $i,j\in I$ with $i\neq j$.
+        \end{enumerate}
+    \end{enumerate}
+    \begin{namedthm*}{Preposition 2}
+        Let $A$ be a nonempty set.
+        \begin{enumerate}[(1)]
+            \item If $\sim$ defines an equivalence relation on $A$ then the set of equivalence classes of $\sim$ form a partition of $A$.
+            \item If $\{A_i\mid i\in I\}$ is a partition of $A$ then there is an equivalence relation on $A$ whose equivalence classes are precisely the sets $A_i,i\in I$.
+        \end{enumerate}
+    \end{namedthm*}
+\end{namedthm*}
+\subsection*{\centering EXERCISES}
+In exercises 1 to 4 let $\mathcal{A}$ be the set of $2\times2$ matrices with real number entries.
+Recall that matrix multiplication is defined by
+\[
+    \begin{pmatrix}
+        a&b\\c&d
+    \end{pmatrix}
+    \begin{pmatrix}
+        p&q\\r&s
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        ap+br&aq+bs\\cp+dr&cq+ds
+    \end{pmatrix}.
+\]
+Let 
+\[
+    M=\begin{pmatrix}
+        1&1\\0&1
+    \end{pmatrix}
+\]
+and let 
+\[
+    \mathcal{B}:=\{X\in\mathcal{A}\mid MX=XM\}.
+\]
+\begin{enumerate}
+    \item Determine which of the following elements of $\mathcal{A}$ lie in $\mathcal{B}$:
+    \[
+        \begin{pmatrix}
+            1&1\\0&1
+        \end{pmatrix},
+        \begin{pmatrix}
+            1&1\\1&1
+        \end{pmatrix},
+        \begin{pmatrix}
+        0&0\\0&0
+    \end{pmatrix},
+    \begin{pmatrix}
+        1&1\\1&0
+    \end{pmatrix},
+    \begin{pmatrix}
+        1&0\\0&1
+    \end{pmatrix},
+    \begin{pmatrix}
+        0&1\\1&0
+    \end{pmatrix}
+    \]
+    \ \\The first is trivially yes.
+    The second is no:
+    \[
+    \begin{pmatrix}
+            1&1\\0&1
+        \end{pmatrix}
+        \begin{pmatrix}
+            1&1\\1&1
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            2&2\\1&1
+        \end{pmatrix}
+        \neq
+        \begin{pmatrix}
+            1&2\\1&2
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            1&1\\1&1
+        \end{pmatrix}
+        \begin{pmatrix}
+            1&1\\0&1
+        \end{pmatrix}
+    \]
+    The third is trivially yes.
+    The fourth is no:
+    \[
+    \begin{pmatrix}
+            1&1\\0&1
+        \end{pmatrix}
+        \begin{pmatrix}
+            1&1\\1&0
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            2&1\\1&0
+        \end{pmatrix}
+        \neq
+        \begin{pmatrix}
+            1&2\\1&1
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            1&1\\1&0
+        \end{pmatrix}
+        \begin{pmatrix}
+            1&1\\0&1
+        \end{pmatrix}
+    \]
+    The fifth is yes (identity).
+    The sixth is no:
+    \[
+    \begin{pmatrix}
+            1&1\\0&1
+        \end{pmatrix}
+        \begin{pmatrix}
+            0&1\\1&0
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            1&1\\1&0
+        \end{pmatrix}
+        \neq
+        \begin{pmatrix}
+            0&1\\1&1
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            0&1\\1&0
+        \end{pmatrix}
+        \begin{pmatrix}
+            1&1\\0&1
+        \end{pmatrix}
+    \]
+    \item Prove that if $P,Q\in\mathcal{B}$, then $P+Q\in\mathcal{B}$.
+    \item Prove that if $P,Q\in\mathcal{B}$, then $P\cdot Q\in\mathcal{B}$.
+    \item Find conditions on $p,q,r,s$ which determine precisely when $\begin{pmatrix}
+        p&q\\r&s
+    \end{pmatrix}\in\mathcal{B}$.
+    \item Determine whether the following functions $f$ are well-defined:
+    \begin{enumerate}
+        \item $f : \mathbb{Q} \to \mathbb{Z}$ defined by $f(a/b) = a$;
+        \item $f : \mathbb{Q} \to \mathbb{Q}$ defined by $f(a/b) = a^2/b^2$;
+
+    \end{enumerate}
+    \item Determine whether the function $f : \mathbb{R}^+ \to \mathbb{Z}$ defined by mapping a real number $r$ to the first digit to the right of the decimal point in a decimal expansion of $r$ is well defined.
+    
+    \item Let $f: A \to B$ be a surjective map of sets. Prove that the relation
+    \[
+        a \sim b \iff f(a) = f(b)
+    \]
+    is an equivalence relation whose equivalence classes are the fibers of $f$.
+\end{enumerate}
 
 % 0.2
 \section{Properties of the Integers}
