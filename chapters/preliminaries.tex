@@ -3,6 +3,18 @@
 
 % 0.1
 \section{Basics}
+The set 
+\[
+    f(A)=\{b\in B\mid b\in f(a),\text{ for some }a\in A\},
+\]
+is a subset of $B$, called the \textit{range} or \textit{image} of $f$.
+For each subset $C$ of $B$ the set 
+\[
+    f^{-1}(C)=\{a\in A\mid f(a)\in C\}
+\]
+consisting of the elements of $A$ mapping into $C$ under $f$ is called the \textit{preimage} or \textit{inverse image} of $C$ under $f$.
+For each $b\in B$, the preimage of $\{b\}$ under $f$ is called the \textit{fiber} of $f$ over $b$.
+
 Let $f:A\to B$.
 \begin{enumerate}[(1)]
         \item $f$ is \textit{injective} or is an \textit{injection} if whenever $a_1\neq a_2$, then $f(a_1)\neq f(a_2)$.
@@ -202,23 +214,125 @@ and let
         \end{pmatrix}
     \]
     \item Prove that if $P,Q\in\mathcal{B}$, then $P+Q\in\mathcal{B}$.
+%     \begin{align*}
+%     \left(\begin{pmatrix}
+%         a&b\\c&d
+%     \end{pmatrix}
+%     +
+%     \begin{pmatrix}
+%         p&q\\r&s
+%     \end{pmatrix}
+%     \right)
+%     \begin{pmatrix}
+%         1&1\\0&1
+%     \end{pmatrix}
+%     =\begin{pmatrix}
+%         a&b\\c&d
+%     \end{pmatrix}
+%     \begin{pmatrix}
+%         1&1\\0&1
+%     \end{pmatrix}
+%     +
+%     \begin{pmatrix}
+%         p&q\\r&s
+%     \end{pmatrix}
+%     \begin{pmatrix}
+%         1&1\\0&1
+%     \end{pmatrix}
+%     \\=\begin{pmatrix}
+%         1&1\\0&1
+%     \end{pmatrix}
+%     \begin{pmatrix}
+%         a&b\\c&d
+%     \end{pmatrix}
+%     +
+%     \begin{pmatrix}
+%         1&1\\0&1
+%     \end{pmatrix}
+%     \begin{pmatrix}
+%         p&q\\r&s
+%     \end{pmatrix}
+%     \\=\begin{pmatrix}
+%         1&1\\0&1
+%     \end{pmatrix}
+%     \left(\begin{pmatrix}
+%         a&b\\c&d
+%     \end{pmatrix}
+%     +
+%     \begin{pmatrix}
+%         p&q\\r&s
+%     \end{pmatrix}
+%     \right)
+% \end{align*}
+\[
+        (P+Q)M=PM+QM=MP+MQ=M(P+Q)
+\]
     \item Prove that if $P,Q\in\mathcal{B}$, then $P\cdot Q\in\mathcal{B}$.
+    \[
+        (PQ)M=P(QM)=P(MQ)=(PM)Q=(MP)Q=M(PQ)
+\]
     \item Find conditions on $p,q,r,s$ which determine precisely when $\begin{pmatrix}
         p&q\\r&s
     \end{pmatrix}\in\mathcal{B}$.
+    \[
+    \begin{pmatrix}
+        p&p+q\\r&r+s
+    \end{pmatrix}=
+    \begin{pmatrix}
+        p&q\\r&s
+    \end{pmatrix}
+    \begin{pmatrix}
+        1&1\\0&1
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1&1\\0&1
+    \end{pmatrix}
+    \begin{pmatrix}
+        p&q\\r&s
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        p+r&q+s\\r&s
+    \end{pmatrix}
+\]
+Thus we have 
+\begin{align*}
+    \begin{cases}
+        p=p+r\\
+        r=r\\
+        p+q=q+s\\
+        r+s=s
+    \end{cases}
+    \implies
+    \begin{cases}
+        0=r\\
+        p=s
+    \end{cases}
+\end{align*}
     \item Determine whether the following functions $f$ are well-defined:
     \begin{enumerate}
         \item $f : \mathbb{Q} \to \mathbb{Z}$ defined by $f(a/b) = a$;
+        
+        Yes, because the rational numbers are defined to be $\{a/b:a,b\in\mathbb{Z}, b\neq0\}$.
         \item $f : \mathbb{Q} \to \mathbb{Q}$ defined by $f(a/b) = a^2/b^2$;
-
+        
+        Yes, because $a,b\in\mathbb{Z}\implies a^2,b^2\in\mathbb{Z}$, and $b\neq0\implies b^2\neq0$.
     \end{enumerate}
     \item Determine whether the function $f : \mathbb{R}^+ \to \mathbb{Z}$ defined by mapping a real number $r$ to the first digit to the right of the decimal point in a decimal expansion of $r$ is well defined.
     
+    False: see $0.0\overline{9}=0.1$, but $0=f(0.0\overline{9})=f(0.1)=1$, and $f$ is not a function.
     \item Let $f: A \to B$ be a surjective map of sets. Prove that the relation
     \[
         a \sim b \iff f(a) = f(b)
     \]
     is an equivalence relation whose equivalence classes are the fibers of $f$.
+
+    See that $f(a)=f(a)$, and $f(a)=f(b)$ implies $f(b)=f(a)$, and $f(a)=f(b)$ and $f(b)=f(c)$ implies $f(a)=f(b)=f(c)$.
+    Also see that
+    \[
+        f^{-1}(\{b\})=\{a\in A\mid f(a)=b\}.
+    \]
 \end{enumerate}
 
 % 0.2

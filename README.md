@@ -1,9 +1,9 @@
 # Exercise Completion
 
-Total Exercise Completion: (1/1872)
+Total Exercise Completion: (7/1872)
 
 Preliminaries:
-0.1~
+- 0.1-0.2~
 
 Part I:
 
@@ -19,12 +19,12 @@ Part VI:
 
 Appendices:
 
-### Preliminaries (1/34)
-- Preliminaries: 1/34 (+1)
+### Preliminaries (7/34)
+- Preliminaries: 7/34 (+6)
 
 ### PART I: Group Theory (0/644)
 - Chapter 01: 0/137
-- Chapter 02: 0/97
+- Chapter 02:s 0/97
 - Chapter 03: 0/105
 - Chapter 04: 0/144
 - Chapter 05: 0/80
