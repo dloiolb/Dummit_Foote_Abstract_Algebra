@@ -337,6 +337,132 @@ Thus we have
 
 % 0.2
 \section{Properties of the Integers}
+\begin{enumerate}[(1)]
+    \item (Well Ordering of $\mathbb{Z}$)
+    If $A$ is any nonempty subset of $\mathbb{Z}^+$, there is some element $m\in A$ such that $m\le a$, for all $a\in A$ ($m$ is called a \textit{minimal element} of $A$).
+    \item If $a,b\in\mathbb{Z}$ with $a\neq0$, we say $a$ \textit{divides} $b$ if there is an element $c\in\mathbb{Z}$ such that $b=ac$ (i.e., $b/a$ is an integer).
+    In this case we write $a\mid b$; if $a$ does not divide $b$ we write $a\not\mid b$.
+    \item If $a,b\in\mathbb{Z}\setminus\{0\}$, there is a unique positive integer $d$, called the \textit{greatest common divisor} (gcd) of $a$ and $b$, satisfying:
+    \begin{enumerate}[(a)]
+        \item $d\mid a$ and $d\mid b$
+        \item if $e\mid a$ and $e\mid b$ then $e\mid d$.
+    \end{enumerate}
+    The gcd of $a$ and $b$ will be denoted $(a,b)$.
+    If $(a,b)=1$, we say that $a$ and $b$ are \textit{relatively prime}.
+    \item If $a,b\in\mathbb{Z}\setminus\{0\}$, there is a unique positive integer $l$, called the \textit{least common multiple} (lcm) of $a$ and $b$, satisfying:
+    \begin{enumerate}[(a)]
+        \item $a\mid l$ and $b\mid l$
+        \item if $a\mid m$ and $b\mid m$ then $l\mid m$.
+    \end{enumerate}
+    The connection between the gcd $d$ and lcm $l$ of any two such $a,b$ is given by $dl=ab$.
+    \item \textit{The Division Algorithm}: if $a,b\in\mathbb{Z}\setminus\{0\}$, then there exist unique $q,r\in\mathbb{Z}$ such that 
+    \[
+        a=qb+r,\quad 0\le r<|b|,
+    \]
+    where $q$ is the \textit{quotient} and $r$ is the \textit{remainder}.
+    \item  The \textit{Euclidean Algorithm} is an important procedure which produces a greatest common divisor of two integers $a$ and $b$ by iterating the Division Algorithm: 
+    if $a,b\in\mathbb{Z}\setminus\{0\}$, then we obtain a sequence of quotients and remainders
+    \begin{align*}
+        a&=q_0b+r_0&&(0)\\
+        b&=q_1r_0+r_1&&(1)\\
+        r_0&=q_2r_1+r_2&&(2)\\
+        r_1&=q_3r_2+r_3&&(3)\\
+        &\vdots\\
+        r_{n-2}&=q_nr_{n-1}+r_n&&(n)\\
+        r_{n-1}&=q_{n+1}r_{n}\ (r_{n+1}=0)&&(n+1)
+    \end{align*}
+    where $r_n$ is the last nonzero remainder.
+    Such an $r_n$ exists since $|b|>|r_0|>|r_1|>\dots>|r_n|$ is a decreasing sequence of strictly positive integers if the remainders are nonzero and such a sequence cannot continue indefinitely.
+    Then $r_n$ is the gcd $(a,b)$ of $a$ and $b$.
+    % \begin{namedthm*}{Example}
+    % $a=57970$, $b=10353$
+    % \begin{align*}
+    %     57970&=(5)10353+6205\\
+    %     10353&=(1)6205+4148\\
+    %     6205&=(1)4148+2057\\
+    %     4148&=(2)2057+34\\
+    %     2057&=(60)34+17\\
+    %     34&=(2)17,
+    % \end{align*}
+    % so that $(57970,10353)=17$.
+    % \end{namedthm*}
+    \item One consequence of the Euclidean Algorithm:
+    if $a,b\in\mathbb{Z}\setminus\{0\}$, then there exist $x,y\in\mathbb{Z}$ such that 
+    \[
+        (a,b)=ax+by.
+    \]
+    \item An element $p$ of $\mathbb{Z}^+$ is called a \textit{prime} if $p>1$ and the only positive divisors of $p$ are $1$ and $p$.
+    Elements of $\mathbb{Z}^+$ that are not prime are called \textit{composite}.
+    \item The \textit{Fundamental Theorem of Arithmetic says}:
+    if $n\in\mathbb{Z}_{>1}$, then $n$ can be factored uniquely into the product of primes;
+    i.e., there are distinct primes $p_1,p_2,\dots,p_n$ and positive integers $\alpha_1,\alpha_2,\dots,\alpha_n$ such that 
+    \[
+        n=p_1^{\alpha_1}p_2^{\alpha_2}\dots p_n^{\alpha_n}.
+    \]
+    This factorization is unique.
+    Suppose we have two positive integers $a$ and $b$ with the prime factorizations
+    \[
+        a=p_1^{\alpha_1}p_2^{\alpha_2}\dots p_n^{\alpha_n},\quad 
+        b=p_1^{\beta_1}p_2^{\beta_2}\dots p_n^{\beta_n},
+    \]
+    and the $p_i$ are unique and allow the $\alpha_i,\beta_i\ge0$.
+    Then the greatest common divisor of $a$ and $b$ is 
+    \[
+        (a,b)=p_1^{\min(\alpha_1,\beta_1)}p_2^{\min(\alpha_2,\beta_2)}\dots p_n^{\min(\alpha_n,\beta_n)}.
+    \]
+    Then similarly the least common multiple is obtained by taking each maximum instead of the minimum.
+    \item The \textit{Euler $\varphi$-function} is defined as follows:
+    for $n\in\mathbb{Z}^+$, let $\varphi(n)$ be the number of positive integers $a\le n$ with $a$ relatively prime to $n$; i.e., $(a,n)=1$.
+    For primes $p$ we have $\varphi(p)=p-1$, and more generally for all $a\ge1$ we have the formula
+    \[
+        \varphi(p^a)=p^a-p^{a-1}=p^{a-1}(p-1).
+    \]
+    The function $\varphi$ is \textit{multiplicative} in the sense that
+    \[
+        \varphi(ab)=\varphi(a)\varphi(b)\quad\text{if }(a,b)=1.
+    \]
+\end{enumerate}
+\subsection*{\centering EXERCISES}
+\begin{enumerate}
+    \item For each of the following pairs of integers $a$ and $b$, determine:
+    \begin{itemize}
+        \item their greatest common divisor ($\gcd(a,b)$),
+        \item their least common multiple ($\text{lcm}(a,b)$),
+        \item and write their greatest common divisor in the form $ax + by$ for some integers $x$ and $y$.
+    \end{itemize}
 
+    \begin{enumerate}[(a)]
+        \item $a = 20,\quad b = 13$
+        \item $a = 69,\quad b = 372$
+        \item $a = 792,\quad b = 275$
+        \item $a = 11391,\quad b = 5673$
+        \item $a = 1761,\quad b = 1567$
+        \item $a = 507885,\quad b = 60808$
+    \end{enumerate}
+
+    \item Prove that if the integer $k$ divides the integers $a$ and $b$, then $k$ divides $as + bt$ for every pair of integers $s$ and $t$.
+    \item Prove that if $n$ is composite then there are integers $a$ and $b$ such that $n \mid ab$ but $n \nmid a$ and $n \nmid b$.
+
+    \item Let $a$, $b$, and $N$ be fixed integers with $a$ and $b$ nonzero, and let $d = (a, b)$ be the greatest common divisor of $a$ and $b$. Suppose $x_0$ and $y_0$ are particular solutions to $ax + by = N$ (i.e., $ax_0 + by_0 = N$). Prove that for any integer $t$, the integers
+    \[
+    x = x_0 + \frac{b}{d}t \quad \text{and} \quad y = y_0 - \frac{a}{d}t
+    \]
+    are also solutions to $ax + by = N$ (this is in fact the general solution).
+
+    \item Determine the value $\varphi(n)$ for each integer $n \leq 30$ where $\varphi$ denotes the Euler $\varphi$ function.
+
+    \item Prove the Well-Ordering Property of $\mathbb{Z}$ by induction and prove that the minimal element is unique.
+
+    \item If $p$ is a prime, prove that there do not exist nonzero integers $a$ and $b$ such that $a^2 = p b^2$ (i.e., $\sqrt{p}$ is not a rational number).
+
+    \item Let $p$ be a prime and $n \in \mathbb{Z}^+$. Find a formula for the largest power of $p$ which divides $n! = n(n - 1)(n - 2)\cdots 2 \cdot 1$ (it involves the greatest integer function).
+
+    \item Write a computer program to determine the greatest common divisor $(a, b)$ of two integers $a$ and $b$ and to express $(a, b)$ in the form $ax + by$ for some integers $x$ and $y$.
+
+    \item Prove that for any given positive integer $N$ there exist only finitely many integers $n$ with $\varphi(n) = N$ where $\varphi$ denotes the Euler $\varphi$ function. Conclude in particular that $\varphi(n)$ tends to infinity as $n$ tends to infinity.
+
+    \item Prove that if $d$ divides $n$ then $\varphi(d)$ divides $\varphi(n)$ where $\varphi$ denotes the Euler $\varphi$ function.
+\end{enumerate}
 % 0.3
 \section{$\mathbb{Z}/n\mathbb{Z}$: The Integers Modulo $n$}
+abcdefg
