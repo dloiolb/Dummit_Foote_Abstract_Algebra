@@ -20,7 +20,7 @@ Part VI:
 Appendices:
 
 ### Preliminaries (7/34)
-- Preliminaries: 7/34 (+6)
+- Preliminaries: 7/34
 
 ### PART I: Group Theory (0/644)
 - Chapter 01: 0/137
